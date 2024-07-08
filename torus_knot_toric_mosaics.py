@@ -2,7 +2,7 @@
 """
 Created on Mon Jul 8 19:03:12 2024
 
-@author: lucta
+@author: Luc Ta
 """
 
 from ortools.linear_solver import pywraplp
@@ -36,12 +36,12 @@ def main():
     solver.Add(h >= v)
 
     # Optimize n, the size of the toric mosaic.
-    solver.Minimize(q-h-v)
+    solver.Minimize(q - h - v)
 
     status = solver.Solve()
 
     if status == pywraplp.Solver.OPTIMAL:
-        print("Solution minimizing n:= q - h - v:")
+        print("Solution minimizing n := q - h - v:")
         print("n =", solver.Objective().Value())
         print("h =", h.solution_value())
         print("v =", v.solution_value())
