@@ -22,17 +22,20 @@ def main():
         return
 
     infinity = solver.infinity()
-    # Make h and v integer non-negative variables
+    # Make h and v non-negative integer variables
     h = solver.IntVar(0.0, infinity, "h")
     v = solver.IntVar(0.0, infinity, "v")
 
     # First constraint
     solver.Add(-3 * h - v - p + q + 4 >= 0)
 
-    # Second constraint
+    # Second constraint: r >= -R
     solver.Add(q - 2 * (h + v + p) + 4 >= 0)
     
-    # Third constraint
+    # Third constraint: R >= r
+    solver.Add(h + 3 * v <= q - 3 * p + 4)
+    
+    # Fourth constraint
     solver.Add(h >= v)
 
     # Optimize n, the size of the toric mosaic.
