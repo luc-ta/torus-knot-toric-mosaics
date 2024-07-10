@@ -52,7 +52,7 @@ def main():
         print("Total vertical crossings:", (p - 1) * v.solution_value())
 
     else:
-        print("The problem does not have an optimal solution.")
+        print("No optimal solution exists.")
 
 if __name__ == "__main__":
     main()
